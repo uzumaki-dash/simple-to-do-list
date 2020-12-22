@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <div class="box" id="heading">
+      <h1><%= kindOfDay %></h1>
+    </div>
+    <div class="box">
+      <!-- to add new list item to a new point -->
+      <% for(let i=0; i<inputvalue.length;i++){ %>
+        <div class="item">
+          <input type="checkbox">
+          <p><%= inputvalue[i] %></p>
+        </div>
+      <% } %>
+      <form class="item" action="/" method="post">
+        <input type="text" name="inputtxt" placeholder="Add New Plan" autocomplete="off">
+        <button type="submit" name="button">+</button>
+      </form>
+    </div>
+    <footer>&copy; Dash Projects 2020</footer>
+  </body>
+</html>

@@ -4,23 +4,29 @@
     <meta charset="utf-8">
     <title>ToDo List</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   </head>
   <body>
 
     <div class="box" id="heading">
-      <h1><%= kindOfDay %></h1>
+      <h1><%= listTitle %></h1>
     </div>
     <div class="box">
       <!-- to add new list item to a new point -->
-      <% for(let i=0; i<inputvalue.length;i++){ %>
-        <div class="item">
-          <input type="checkbox">
-          <p><%= inputvalue[i] %></p>
-        </div>
-      <% } %>
+      <% inputvalue.forEach(function(input){ %>
+        <form action=/delete method="post">
+          <div class="item">
+          <!--  <input type="checkbox" name="checkbox" value="<%= input._id %>" onchange="this.form.submit()">--> <!-- onchange is to submit a checkbox -->
+            <button type="submit" name="check" value="<%= input._id %>"><i class="fas fa-trash"></i></button>
+            <p><%= input.name %></p>
+          </div>
+          <input type="hidden" name="listName" value="<%= listTitle %>"></input>      <!--hidden type to get custom list name-->
+        </form>
+
+      <% }); %>
       <form class="item" action="/" method="post">
         <input type="text" name="inputtxt" placeholder="Add New Plan" autocomplete="off">
-        <button type="submit" name="button">+</button>
+        <button type="submit" name="list" value="<%= listTitle %>">+</button>   <!--value is that of listname-->
       </form>
     </div>
     <footer>&copy; Dash Projects 2020</footer>
